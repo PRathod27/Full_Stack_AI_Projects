@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Geist } from "next/font/google";
 import "./globals.css";
 import {
   ClerkProvider,
@@ -8,6 +8,9 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const outfitFont = Outfit({
   subsets: ["latin"],
@@ -20,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${outfitFont.className} antialiased`}>
+    <html lang="en" className={cn("antialiased", outfitFont.className, "font-sans", geist.variable)}>
       <body className="min-h-full flex flex-col">
         <ClerkProvider>
           <header className="flex justify-end items-center p-4 gap-4 h-16">
