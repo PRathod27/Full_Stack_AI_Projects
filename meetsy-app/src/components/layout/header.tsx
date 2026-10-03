@@ -1,8 +1,12 @@
-import { SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs";
+"use client";
+import { UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Badge } from "../ui/badge";
+import { TrophyIcon } from "lucide-react";
 
 export default function Header() {
+  const { isSignedIn } = useUser();
+
   return (
     <header className="flex justify-end items-center p-4 gap-4 h-16">
       <div className="layout-container">
@@ -10,16 +14,30 @@ export default function Header() {
           <Link href="/" className="font-bold text-xl">
             Meetsy
           </Link>
+          {isSignedIn && (
+            <nav className="hidden md:flex items-center gap-8">
+              <Link href="/dashboard">DashBoard</Link>
+              <Link href="/communities">Communities</Link>
+              <Link href="/chat">Chat</Link>
+            </nav>
+          )}
         </div>
-        <Show when="signed-out">
-          <SignInButton />
-          <SignUpButton>
-            <Button>Sign Up</Button>
-          </SignUpButton>
-        </Show>
-        <Show when="signed-in">
-          <UserButton />
-        </Show>
+        <div className="flex items-center gap-4">
+          {isSignedIn ? (
+            <Badge className="flex items-center gap-2" variant="outline">
+              <TrophyIcon className="size-3 text-primary" /> Pro
+            </Badge>
+          ) : (
+            <></>
+          )}
+          <UserButton
+            appearance={{
+              elements: {
+                avatarBox: "size-9",
+              },
+            }}
+          />
+        </div>
       </div>
     </header>
   );
