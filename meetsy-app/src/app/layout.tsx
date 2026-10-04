@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
 import { Outfit, Geist } from "next/font/google";
 import "./globals.css";
-import {
-  ClerkProvider,
-  Show,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import Header from "@/components/layout/header";
+import HeaderWrapper from "@/components/layout/header-wrapper";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -36,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <ClerkProvider>
-          <Header />
+          <HeaderWrapper />
           {children}
         </ClerkProvider>
       </body>
