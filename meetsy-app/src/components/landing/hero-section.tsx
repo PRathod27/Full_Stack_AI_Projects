@@ -8,10 +8,16 @@ export default function HeroSection() {
       <HeroGradient />
       <div className="relative section-container section-padding">
         <div className="text-center">
-          <Badge>
-            Powered By AI{" "}
-            <SparkleIcon className="size-4 inline-block  ml-2"></SparkleIcon>
+          <Badge className="mb-6 text-sm font-medium" variant={"secondary"}>
+            Powered By AI
+            <SparkleIcon className="size-4 inline-block ml-2"></SparkleIcon>
           </Badge>
+          <h1>Find Your Perfect AI Learning Partner</h1>
+          <p>
+            Join communities, set your learning goals, and get matched with
+            partners who share your passion. Chat, collaborate, and grow
+            together with AI-powered insights
+          </p>
         </div>
       </div>
     </section>
