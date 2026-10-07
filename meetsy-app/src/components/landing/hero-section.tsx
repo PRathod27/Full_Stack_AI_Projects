@@ -1,6 +1,8 @@
-import { SparkleIcon } from "lucide-react";
+import { SparkleIcon, ZapIcon } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { HeroGradient } from "./background-gradient";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 export default function HeroSection() {
   return (
@@ -18,6 +20,24 @@ export default function HeroSection() {
             partners who share your passion. Chat, collaborate, and grow
             together with AI-powered insights
           </p>
+          <div>
+            <Link href="/sign-up">
+              <Button size="lg" className="hero-button-outline group">
+                Get Started for Free
+              </Button>
+            </Link>
+            <Link href="/#pricing">
+              <Button
+                size="lg"
+                className="link-button hero-button-primary group"
+              >
+                <span className="hero-button-content">
+                  <ZapIcon className="hero-button-icon-primary group-hover:scale-125 group-hover:rotate-12" />
+                  Buy a Plan
+                </span>
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
